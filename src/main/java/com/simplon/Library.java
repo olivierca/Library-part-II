@@ -20,20 +20,20 @@ public class Library {
     public ArrayList<Book> putBooks(ArrayList<Book> books,Worker worker)
     {
         if(!isOpen() && workerReady(worker))    Books.addAll(worker.Books());
-        else if(isOpen())    Books.addAll(books);
+        else if(isOpen() && books!=null)    Books.addAll(books);
         return this.Books;
     }
 
     public ArrayList<CD> putCDs(ArrayList<CD> cds,Worker worker)
     {
         if(!isOpen() && workerReady(worker))    CDs.addAll(worker.CDs());
-        else if(isOpen())    CDs.addAll(cds);
+        else if(isOpen() && cds!=null)    CDs.addAll(cds);
         return CDs;
     }
 
     public ArrayList<DVD> putDvds(ArrayList<DVD> dvds,Worker worker)
     {
-        if(DVDs.size()<=maxDVD && isOpen()) {
+        if(DVDs.size()<=maxDVD && isOpen() && dvds!=null) {
             int i = 0;
             int y = 0;
 
@@ -63,7 +63,8 @@ public class Library {
     }
 
     private boolean workerReady(Worker worker){
-        return (worker.getWorkerTime()<openTime || worker.getWorkerTime()>closeTime);
+        if(worker!=null)    return (worker.getWorkerTime()<openTime || worker.getWorkerTime()>closeTime);
+        return false;
     }
     private boolean isOpen() {
         return (openHour >= openTime && openHour <= closeTime);
