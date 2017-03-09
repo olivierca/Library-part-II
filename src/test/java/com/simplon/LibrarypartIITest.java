@@ -9,8 +9,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class LibrarypartIITest {
-
-    Library library = new Library(15);
+    Horloge horloge = new Horloge(15);
+    Library library = new Library(horloge);
     Worker worker = new Worker("Marcel",8);
 
     @Test
@@ -45,7 +45,7 @@ public class LibrarypartIITest {
     public void addLibrary_4() {
         //set
         ArrayList<DVD> dvds = new ArrayList<DVD>();
-        library = new Library(15);
+        library = new Library(horloge);
 
         dvds.add(new DVD("dvd", 120, Movie.HORROR, false,1));
         dvds.add(new DVD("Brasil", 120, Movie.FUN, false,2));
@@ -74,7 +74,7 @@ public class LibrarypartIITest {
         //set
         ArrayList<DVD> result;
         ArrayList<DVD> dvds = new ArrayList<DVD>();
-        library = new Library(15);
+        library = new Library(horloge);
         dvds.add(new DVD("dvd", 120, Movie.HORROR, false,1));
 
         //test
@@ -100,7 +100,8 @@ public class LibrarypartIITest {
     @Test
     public void Worker_put_Books() {
         //set
-        Library library = new Library(11);
+        horloge.setCurrentHour(10);
+        Library library = new Library(horloge);
         ArrayList<Book> books = new ArrayList<Book>();
         books.add(new Book("l'Univers elegant", 400));
         books.add(new Book("livre2", 40));

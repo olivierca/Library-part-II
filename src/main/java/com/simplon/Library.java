@@ -6,15 +6,15 @@ public class Library {
     private static final int maxDVD = 3;
     private static final int openTime = 13;
     private static final int closeTime = 19;
-    private int openHour = 5;
 
+    private Horloge Hour;
     private ArrayList<Book> Books = new ArrayList<Book>();
     private ArrayList<CD> CDs = new ArrayList<CD>();
     private ArrayList<DVD> DVDs = new ArrayList<DVD>();
 
-    public Library(int openHour){
-
-        this.openHour = openHour;
+    public Library(Horloge horloge)
+    {
+        Hour = horloge;
     }
 
     public ArrayList<Book> putBooks(ArrayList<Book> books,Worker worker)
@@ -67,6 +67,6 @@ public class Library {
         return false;
     }
     private boolean isOpen() {
-        return (openHour >= openTime && openHour <= closeTime);
+        return (Hour.getHour() >= openTime && Hour.getHour() <= closeTime);
     }
 }
